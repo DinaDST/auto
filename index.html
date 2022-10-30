@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Расчет стоимости автомобиля</title>
+    <link rel="stylesheet" href="./main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+</head>
+
+<body>
+    <main class="wrapper">
+        <div class="container">
+            <form id="form">
+
+                <div class="heading">
+                    <h1 class="heading-title">Калькулятор стоимости автомобиля</h1>
+                    <p class="heading-desc">Теперь Вы можете рассчитать цену автомобиля самостоятельно. Услуги фирмы по оформлению всех документов (0.15%) включены в итоговую стоимость авто. После произведенных расчетов Вы можете связаться с нами и мы укажем, какие марки машин
+                        из данного ценового диапазона есть в наличии.</p>
+                </div>
+
+                <div class="calc-section">
+                    <label class="checkbox-wrapper title-bold section-title .section-title--vertical-center">
+							<span class="title__inline">Объем двигателя:</span>
+							<input type="number" min="2500" max="5000" value="3000" step="100" id="engine-size" class="title__inline input-short" />
+							<span class="title__inline">см<sup>3</sup></span>
+						</label>
+                    <input type="range" id="engine-range" class="range-input" min="2500" max="5000" value="3000" step="100" />
+                </div>
+
+                <div class="calc-section">
+                    <h4 class="checkbox-wrapper title-bold section-title">Выберите тип авто из предложенных вариантов:</h4>
+                    <label class="radio-wrapper">
+							<input type="radio" class="radio" name="type" value="1" checked />
+							<div class="title-lite">Стандарт</div>
+					</label>
+                    <label class="radio-wrapper">
+							<input type="radio" class="radio" name="type" value="1.3"/>
+							<div class="title-lite">Бизнес-класс
+								<span class="note">+30% к стоимости</span>
+							</div>
+					</label>
+                    <label class="radio-wrapper">
+							<input type="radio" class="radio" name="type" value="1.5"/>
+							<div class="title-lite">Премиум авто
+								<span class="note">+50% к стоимости</span>
+							</div>
+					</label>
+                </div>
+
+                <div class="calc-section">
+                    <label class="checkbox-wrapper title-bold section-title">Импорт из:</label>
+                    <label class="radio-wrapper">
+							<input type="radio" class="radio" name="area" value="1" checked />
+							<div class="title-lite">Европы</div>
+					</label>
+                    <label class="radio-wrapper">
+							<input type="radio" class="radio" name="area" value="1.2" />
+							<div class="title-lite">США
+								<span class="note">+20% к стоимости</span>
+							</div>
+					</label>
+                </div>
+
+                <div class="calc-section">
+                    <label class="checkbox-wrapper title-bold section-title">Тип кузова:</label>
+                    <div class="body-wrapper">
+                        <label class="body-label">
+								<input class="body-radio" type="radio" name="carBody" value="1" checked />
+								<span class="body-radio-name">Седан</span>
+						</label>
+
+                        <label class="body-label">
+								<input class="body-radio" type="radio" name="carBody" value="1" />
+								<span class="body-radio-name">Универсал</span>
+							</label>
+
+                        <label class="body-label">
+								<input class="body-radio" type="radio" name="carBody" value="1"/>
+								<span class="body-radio-name">Хэтчбэк</span>
+							</label>
+
+                        <label class="body-label">
+                                <input class="body-radio" type="radio" name="carBody" value="1.01"/>
+                                <span class="body-radio-name">Лифтбек</span>
+                        </label>
+
+                        <label class="body-label">
+								<input class="body-radio" type="radio" name="carBody" value="1.25"/>
+								<span class="body-radio-name">Кабриолет</span>
+							</label>
+
+                        <label class="body-label">
+								<input class="body-radio" type="radio" name="carBody" value="1.45"/>
+								<span class="body-radio-name">Внедорожник</span>
+							</label>
+
+                        <label class="body-label">
+								<input class="body-radio" type="radio" name="carBody" value="1.35"/>
+								<span class="body-radio-name">Пикап</span>
+						</label>
+
+                        <label class="body-label">
+                            <input class="body-radio" type="radio" name="carBody" value="1.3"/>
+                            <span class="body-radio-name">Кроссовер</span>
+                    </label>
+                    </div>
+                </div>
+
+                <div class="calc-section">
+                    <label class="checkbox-wrapper title-bold section-title"> Год автомобиля: </label>
+                    <select name="" id="year" onclick="calculate();">
+                        <option value="1" selected>до 2017 года (включительно)</option>
+                        <option value="1.1">после 2018 года</option>
+                    </select>
+                </div>
+
+                <div class="calc-section">
+                    <label class="checkbox-wrapper title-bold section-title"> Дополнительные услуги: </label>
+                    <label class="radio-wrapper">
+							<input type="checkbox" class="radio" name="expert" value="1.01" />
+							<div class="title-lite">Осмотр авто экспертом (2 часа) с Вашим участием
+								<span class="note">+1% к стоимости</span>
+							</div>
+					</label>
+                    <label class="radio-wrapper">
+							<input type="checkbox" class="radio" name="diagnostics" value="1.03" />
+							<div class="title-lite">Полная диагностика автомобиля
+								<span class="note">+3% к стоимости</span>
+							</div>
+					</label>
+                    <label class="radio-wrapper">
+							<input type="checkbox" class="radio" name="resale" value="1.01" />
+							<div class="title-lite">Мойка, воск, химчистка, фотографии для последующей перепродажи
+								<span class="note">+1% к стоимости</span>
+							</div>
+					</label>
+                </div>
+
+                <div class="calc-price">
+                    <div class="calc-price-title">Итоговая стоимость автомобиля:</div>
+                    <div class="calc-price-value">
+                        <span id="finish-price">0</span> евро
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
